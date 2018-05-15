@@ -69,7 +69,7 @@ export default {
       let option = {
         grid: {
           left: "3%",
-          right: "7%",
+          right: "5%",
           bottom: "3%",
           containLabel: true
         },
@@ -116,6 +116,8 @@ export default {
           {
             type: "value",
             scale: true,
+            max: 100,
+            min:0,
             name: "进攻",
             nameTextStyle:{
               fontSize: 16 
@@ -132,6 +134,8 @@ export default {
           {
             type: "value",
             scale: true,
+            max: 100,
+            min: 0,
             name: "防守",
             nameTextStyle:{
               fontSize: 16 
@@ -156,7 +160,6 @@ export default {
 
   mounted() {
     this.drawScatter();
-    console.log(this.getOption());
   }
 };
 </script>
@@ -164,7 +167,7 @@ export default {
 <style>
 #main {
   width: 100%;
-  height: 400px;
+  height: 500px;
 }
 </style>
 

@@ -1,11 +1,9 @@
 <template>
 <v-content>
-    <v-content>
-    <word-cloud
-    title="试一试"
-    seriesName="看得见"
-    :data="data"></word-cloud>
-    </v-content>
+  <word-cloud
+  title="试一试"
+  seriesName="看得见"
+  :data="data"></word-cloud>
 </v-content>
 </template>
 

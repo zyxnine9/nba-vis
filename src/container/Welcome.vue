@@ -47,6 +47,7 @@
 <script>
 import Introduction from "@/components/Introduction"
 import BarChar from "@/components/BarChar"
+import axios from 'axios'
 
 export default {
   data(){
@@ -56,7 +57,6 @@ export default {
       name: "进度"
     }
   },
-
   components:{
     "introduction": Introduction,
     "bar-char": BarChar

@@ -21,7 +21,7 @@ export default {
             fontSize: 23
           }
         },
-        backgroundColor: "#F7F7F7",
+        // backgroundColor: "#F7F7F7",
         tooltip: {
           show: true
         },
@@ -82,7 +82,7 @@ export default {
 <style scoped>
 #main {
   width: 100%;
-  height: 600px;
+  height: 400px;
 }
 </style>
 
