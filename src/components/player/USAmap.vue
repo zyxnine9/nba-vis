@@ -1,12 +1,11 @@
 <template>
-<v-content id="main">
-
-</v-content>
+<div id="map">
+</div>
 </template>
 
 <script>
 import echarts from "echarts";
-import usaJson from "../../static/geoJson";
+import usaJson from "../../../static/geoJson";
 export default {
   data() {
     return {
@@ -36,7 +35,7 @@ export default {
           width: 2
         }
       });
-      let map = echarts.init(document.getElementById("main"));
+      let map = echarts.init(document.getElementById("map"));
       const option = {
         title: {
           text: "USA Population Estimates (2012)",
@@ -58,7 +57,7 @@ export default {
           left: "right",
           min: 500000,
           max: 38000000,
-          color: ["orangered", "yellow", "lightskyblue"],
+          color: ["#B71C1C", "#E53935", "#F9A825", "#FFEE58", "#0288D1", "#01579B"],
           text: ["High", "Low"], // 文本，默认为数值文本
           calculable: true
         },
@@ -153,7 +152,7 @@ export default {
 </script>
 
 <style>
-#main {
+#map {
   width: 100%;
   height: 600px;
 }

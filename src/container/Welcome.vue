@@ -16,6 +16,12 @@
   :y="y"
   title="项目进度"
   ></bar-char>
+
+  <word-cloud
+  v-if="words"
+  title="NBA一览"
+  seriesName="新闻"
+  :data="words"></word-cloud>
   
   <v-container>
     <v-layout row justify-space-between ma-2>
@@ -47,19 +53,29 @@
 <script>
 import Introduction from "@/components/Introduction"
 import BarChar from "@/components/BarChar"
+import WordCloud from '../components/WordCloud'
 import axios from 'axios'
 
 export default {
   data(){
     return{
       y: ["爬取数据","数据处理","可视化"],
-      data: [70,30,40],
-      name: "进度"
+      data: [70,60,66],
+      name: "进度",
+      words: false,
     }
   },
+  created(){
+     axios.get('http://127.0.0.1:5000/api/keywords.json')
+    .then(response=>{
+      this.words = response.data;
+    })
+  }
+  ,
   components:{
     "introduction": Introduction,
-    "bar-char": BarChar
+    "bar-char": BarChar,
+    "word-cloud": WordCloud,
   }
 }
 </script>

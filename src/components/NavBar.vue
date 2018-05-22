@@ -45,9 +45,9 @@ export default {
           to: "/player"
         },
         {
-          description: "球队",
+          description: "顶尖球员",
           icon: "whatshot",
-          to: "/team"
+          to: "/topplayer"
         },
         {
           description: "冠军球队",
@@ -63,9 +63,5 @@ export default {
 <style scoped>
   .large{
       font-size: medium;
-  }
-  .pine{
-    /* position: fixed; */
-    
   }
 </style>

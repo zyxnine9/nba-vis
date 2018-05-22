@@ -1,5 +1,5 @@
 <template>
-  <v-content id="main"></v-content>
+  <v-content id="wordcloud"></v-content>
 </template>
 
 <script>
@@ -67,20 +67,19 @@ export default {
     drawWordCloud() {
     //   var echarts = require('echarts');
       require('echarts-wordcloud');
-      let wordCloud = echarts.init(document.getElementById("main"));
+      let wordCloud = echarts.init(document.getElementById("wordcloud"));
       wordCloud.setOption(this.getOption());
     }
   },
 
   mounted() {
-      console.log("word cloud");
       this.drawWordCloud();
   }
 };
 </script>
 
 <style scoped>
-#main {
+#wordcloud {
   width: 100%;
   height: 400px;
 }

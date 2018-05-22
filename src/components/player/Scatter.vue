@@ -46,20 +46,6 @@ export default {
             ]
           ]
         },
-        markPoint: {
-          data: [
-            { type: "max", name: "最大值" },
-            { type: "min", name: "最小值" }
-          ]
-        },
-        markLine: {
-          lineStyle: {
-            normal: {
-              type: "solid"
-            }
-          },
-          data: [{ type: "average", name: "平均值" }, { xAxis: item.average }]
-        }
       };
       return series;
     },
@@ -83,11 +69,6 @@ export default {
                 `进攻 : ${params.value[0]} <br/>` +
                 `防守 : ${params.value[1]} <br/>`
               );
-            } else {
-              return (
-                "平均值 :<br/>" +
-                `${params.value} 分`
-              );
             }
           },
           axisPointer: {
@@ -107,7 +88,7 @@ export default {
             }
           }
         },
-        brush: {},
+        brush:{},
         legend: {
           data: this.legendData,
           left: "center"
@@ -116,7 +97,6 @@ export default {
           {
             type: "value",
             scale: true,
-            max: 100,
             min:0,
             name: "进攻",
             nameTextStyle:{
@@ -134,7 +114,6 @@ export default {
           {
             type: "value",
             scale: true,
-            max: 100,
             min: 0,
             name: "防守",
             nameTextStyle:{

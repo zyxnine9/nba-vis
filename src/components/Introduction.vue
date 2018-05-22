@@ -20,7 +20,9 @@
                 <p class="text-xs-center white--text title">
                   This is why we visualization</p>
                 <p align="center">
-                  <v-btn large>
+                  <v-btn 
+                  to="/team"
+                  large>
                     <strong style="color: rgb(0, 188, 212)">
                       Let's Go
                     </strong>
@@ -55,9 +57,6 @@
 
 <script>
 export default {
-  mounted(){
-    console.log("son")
-  }
 }
 </script>
 
