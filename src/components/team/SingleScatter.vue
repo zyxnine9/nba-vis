@@ -13,31 +13,37 @@ export default {
         document.getElementById("singlescatter")
       );
 
-      let hours = [
-        "12a",
-        "1a",
-        "2a",
-        "3a",
-        "4a",
-        "5a",
-        "6a",
-        "7a",
-        "8a",
-        "9a",
-        "10a",
-        "11a",
-        "12p",
-        "1p",
-        "2p",
-        "3p",
-        "4p",
-        "5p",
-        "6p",
-        "7p",
-        "8p",
-        "9p",
-        "10p",
-        "11p"
+      const hours = [
+        "金州勇士",
+        "迈阿密热火",
+        "达拉斯小牛",
+        "费城76人",
+        "萨克拉门托国王",
+        "菲尼克斯太阳",
+        "芝加哥公牛",
+        "纽约尼克斯",
+        "犹他爵士",
+        "洛杉矶湖人",
+        "洛杉矶快船",
+        "波特兰开拓者",
+        "波士顿凯尔特人",
+        "明尼苏达森林狼",
+        "新奥尔良鹈鹕",
+        "底特律活塞",
+        "布鲁克林篮网",
+        "密尔沃基雄鹿",
+        "孟菲斯灰熊",
+        "奥兰多魔术",
+        "多伦多猛龙",
+        "夏洛特黄蜂",
+        "圣安东尼奥马刺",
+        "印第安纳步行者",
+        "华盛顿奇才",
+        "克里夫兰骑士",
+        "俄克拉荷马雷霆",
+        "休斯顿火箭",
+        "亚特兰大老鹰",
+        "丹佛掘金"
       ];
       let days = [
         "Saturday",
@@ -219,32 +225,28 @@ export default {
         [6, 22, 2],
         [6, 23, 6]
       ];
-      data = data.map(function(item) {
-        return [item[1], item[0], item[2]];
-      });
 
       let option = {
         title: {
-          text: "Punch Card of Github"
+          text: "球队Rank值",
         },
-        legend: {
-          data: ["Punch Card"],
-          left: "right"
-        },
+       
         tooltip: {
           position: "top",
           formatter: function(params) {
             return (
-              params.value[2] +
-              " commits in " +
+              "在" +
+              days[params.value[1]] +
+              "年期间，" +
               hours[params.value[0]] +
-              " of " +
-              days[params.value[1]]
+              "共发表了" +
+              params.value[2] +
+              "份论文"
             );
           }
         },
         grid: {
-          left: 1,
+          left: 2,
           bottom: 10,
           right: 10,
           containLabel: true
@@ -262,6 +264,11 @@ export default {
           },
           axisLine: {
             show: false
+          },
+          axisLabel: {
+            show: true,
+            rotate: 60,
+            interval:0
           }
         },
         yAxis: {
@@ -273,10 +280,10 @@ export default {
         },
         series: [
           {
-            name: "Punch Card",
+            name: "论文数量",
             type: "scatter",
             symbolSize: function(val) {
-              return val[2] * 2;
+              return val[2] * 4.2;
             },
             data: data,
             animationDelay: function(idx) {
@@ -288,14 +295,14 @@ export default {
       singleScatter.setOption(option);
     }
   },
-  mounted(){
+  mounted() {
     this.drawScatter();
   }
 };
 </script>
 
 <style scoped>
-#singlescatter{
+#singlescatter {
   width: 100%;
   height: 400px;
   margin-right: 5%;

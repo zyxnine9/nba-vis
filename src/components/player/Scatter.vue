@@ -66,8 +66,8 @@ export default {
             if (params.value.length > 1) {
               return (
                 `球员 : ${params.value[2]} <br/>` +
-                `进攻 : ${params.value[0]} <br/>` +
-                `防守 : ${params.value[1]} <br/>`
+                `坐标x : ${Math.round(params.value[0])} <br/>` +
+                `坐标y : ${Math.round(params.value[1])} <br/>`
               );
             }
           },
@@ -97,14 +97,10 @@ export default {
           {
             type: "value",
             scale: true,
-            min:0,
-            name: "进攻",
             nameTextStyle:{
               fontSize: 16 
             },
-            axisLabel: {
-              formatter: "{value} 分"
-            },
+          
             splitLine: {
               show: false
             }
@@ -114,14 +110,10 @@ export default {
           {
             type: "value",
             scale: true,
-            min: 0,
-            name: "防守",
             nameTextStyle:{
               fontSize: 16 
             },
-            axisLabel: {
-              formatter: "{value} 分"
-            },
+            
             splitLine: {
               show: false
             }

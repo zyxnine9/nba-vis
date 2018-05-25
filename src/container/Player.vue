@@ -17,21 +17,29 @@ import axios from "axios";
 
 export default {
   created() {
-    axios.get("http://127.0.0.1:5000/api/attack_defense.json").then(res => {
+    // axios.get("http://127.0.0.1:5000/api/attack_defense.json").then(res => {
+    //   this.series = [
+    //     { name: "SG", data: res.data.SG },
+    //     { name: "C", data: res.data.C },
+    //     { name: "PF", data: res.data.PF },
+    //     { name: "PG", data: res.data.PG },
+    //     { name: "SF", data: res.data.SF }
+    //   ];
+    // });
+    axios.get('http://127.0.0.1:5000/api/player_scatter.json').then(res=>{
       this.series = [
-        { name: "SG", data: res.data.SG },
-        { name: "C", data: res.data.C },
-        { name: "PF", data: res.data.PF },
-        { name: "PG", data: res.data.PG },
-        { name: "SF", data: res.data.SF }
-      ];
-      console.log(this.series)
-    });
+        {name:'G', data: res.data.G},
+        {name:'C', data: res.data.C},
+        {name:'F', data: res.data.F},
+        {name:'G-F', data: res.data['G-F']},
+        {name:'C-F', data: res.data['C-F']},
+        ]
+    })
   },
 
   data() {
     return {
-      legend: ["SG", "PF", "C", "SF", "PG"],
+      legend: ["G", "F", "C", "C-F", "G-F"],
       //进攻，防守，名字
       series: false,
     };
