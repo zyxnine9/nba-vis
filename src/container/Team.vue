@@ -4,7 +4,10 @@
     v-if="team_data"
     :teamData="team_data"
     ></heat-map>
-    <single-scatter></single-scatter>
+    <single-scatter
+    class="mag"
+    v-if="rank_data"
+    :data="rank_data"></single-scatter>
   </v-content>
 </template>
 
@@ -20,10 +23,15 @@ export default {
     .then(response=>{
       this.team_data = response.data;
     })
+    axios.get('http://127.0.0.1:5000/api/team_rank.json')
+    .then(response=>{
+      this.rank_data = response.data;
+    })
   },
   data() {
     return {
       team_data: '',
+      rank_data: false,
     };
   },
   components: {
@@ -33,3 +41,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.mag{
+  margin-right: 40px;
+}
+</style>

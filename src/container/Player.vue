@@ -6,7 +6,12 @@
     :legendData="legend"
     :series="series"
     ></scatter>
-    <usa-map></usa-map>
+    <v-flex xs8>
+      <usa-map
+      v-if="player_geo"
+      :data="player_geo"
+      ></usa-map>
+    </v-flex>
   </v-content>
 </template>
 
@@ -17,15 +22,10 @@ import axios from "axios";
 
 export default {
   created() {
-    // axios.get("http://127.0.0.1:5000/api/attack_defense.json").then(res => {
-    //   this.series = [
-    //     { name: "SG", data: res.data.SG },
-    //     { name: "C", data: res.data.C },
-    //     { name: "PF", data: res.data.PF },
-    //     { name: "PG", data: res.data.PG },
-    //     { name: "SF", data: res.data.SF }
-    //   ];
-    // });
+    axios.get('http://127.0.0.1:5000/api/player_geo.json').then(res=>{
+      this.player_geo = res.data
+    });
+
     axios.get('http://127.0.0.1:5000/api/player_scatter.json').then(res=>{
       this.series = [
         {name:'G', data: res.data.G},
@@ -42,6 +42,7 @@ export default {
       legend: ["G", "F", "C", "C-F", "G-F"],
       //进攻，防守，名字
       series: false,
+      player_geo: false,
     };
   },
   components: {

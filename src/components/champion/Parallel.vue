@@ -1,57 +1,67 @@
 <template>
-    <v-content>
+ 
       <div id="parallel"></div>
-    </v-content>
+  
 </template>
 
 <script>
 import echarts from "echarts";
 export default {
+  props:{data: Array},
   methods: {
+    getSeries(array) {
+      let result = [];
+      for (let item of array) {
+        let serie = {
+          lineStyle: { width: 5 },
+          name: item.name,
+          type: "parallel",
+          data: item.data
+        };
+        result.push(serie)
+      };
+      return result;
+    },
     drawParallel() {
       let parallel = echarts.init(document.getElementById("parallel"));
+      let config = this.getSeries(this.data);
       let option = {
         parallelAxis: [
-          { dim: 0, name: "Price" },
-          { dim: 1, name: "Net Weight" },
-          { dim: 2, name: "母猪" },
-          { dim: 3, name: "继而" }
+          { dim: 0, name: "常规赛-客场-胜" , max:40,min:10},
+          { dim: 1, name: "常规赛-主场-胜" , max:40,min:10},
+          { dim: 3, name: "季后赛-主场-胜",max:12,min:5 },
+          { dim: 4, name: "季后赛-客场-胜",max:12,min:5 }
         ],
         legend: {
-          data: ["regular", "filly"]
+          data: [
+            "金州勇士16-17",
+            "克里夫兰骑士15-16",
+            "金州勇士14-15",
+            "圣安东尼奥马刺13-14",
+            "迈阿密热火12-13",
+            "迈阿密热火11-12",
+            "达拉斯小牛10-11",
+            "洛杉矶湖人09-10",
+            "洛杉矶湖人08-09"
+          ],
+          bottom:'3%',
         },
-        series: [
-          {
-            type: "parallel",
-            name: "filly",
-            lineStyle: {
-              width: 4
-            },
-            data: [[12.99, 100, 12, 14], [9.99, 12, 18, 19], [20, 120, 66, 33]]
-          },
-          {
-            type: "parallel",
-            name: "regular",
-            lineStyle: {
-              width: 4
-            },
-            data: [[13, 19, 13, 64], [9.99, 77, 19, 75], [14, 110, 88, 7]]
-          }
-        ]
+        series: config
       };
       parallel.setOption(option);
+      console.log(config);
     }
   },
-  mounted(){
-      this.drawParallel()
+  mounted() {
+    this.drawParallel();
   }
 };
 </script>
 
 <style scoped>
-#parallel{
-    width: 100%;
-    height: 300px
+#parallel {
+  width: 100%;
+  height: 400px;
 }
 </style>
 

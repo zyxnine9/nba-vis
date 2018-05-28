@@ -23,6 +23,7 @@ export default {
         name: item.name,
         type: "scatter",
         data: item.data,
+        symbolSize:12,
         markArea: {
           silent: true,
           itemStyle: {
