@@ -1,6 +1,5 @@
 <template>
 <div>
-  
   <introduction></introduction>
   <div class="back">
     <div class="des">
@@ -65,7 +64,11 @@ export default {
       words: false,
     }
   },
+  mounted(){
+    console.log("mounted")
+  },
   created(){
+    console.log("haha")
      axios.get('http://127.0.0.1:5000/api/keywords.json')
     .then(response=>{
       this.words = response.data;

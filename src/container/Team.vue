@@ -3,7 +3,9 @@
     <heat-map
     v-if="team_data"
     :teamData="team_data"
-    ></heat-map>
+    ></heat-map>  
+   <p>{-1: ['布鲁克林篮网', '孟菲斯灰熊', '俄克拉荷马雷霆', '休斯顿火箭'],
+ 0: ['金州勇士', '新奥尔良鹈鹕'],</p>
     <single-scatter
     class="mag"
     v-if="rank_data"

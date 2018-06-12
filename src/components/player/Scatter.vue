@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="scattery">
   </div>
 </template>
 
@@ -125,7 +125,7 @@ export default {
       return option;
     },
     drawScatter() {
-      let scatter = echarts.init(document.getElementById("main"));
+      let scatter = echarts.init(document.getElementById("scattery"));
       scatter.setOption(this.getOption());
     }
   },
@@ -137,7 +137,7 @@ export default {
 </script>
 
 <style>
-#main {
+#scattery {
   width: 100%;
   height: 500px;
 }

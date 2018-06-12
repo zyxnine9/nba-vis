@@ -1,7 +1,8 @@
 <template>
   <v-content>
-    this is player
+    this is playerhhhh
     <scatter
+    class="scatter"
     v-if="series"
     :legendData="legend"
     :series="series"
@@ -52,4 +53,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.scatter{
+  height: 500px;
+}
+</style>
 
