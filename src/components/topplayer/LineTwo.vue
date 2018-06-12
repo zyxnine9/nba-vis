@@ -18,14 +18,16 @@ export default {
       let line = echarts.init(document.getElementById("top-line-two"));
       let option = {
         title: {
-          text: this.title
+          text: this.title,
+          bottom: 0,
+          left: "center"
         },
         tooltip: {
           trigger: "axis"
         },
         legend: {
           data: this.getNames(),
-          bottom: '0%',
+          top: -4
         },
         xAxis: {
           type: "category",

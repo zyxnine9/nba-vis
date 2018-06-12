@@ -67,8 +67,18 @@ export default {
         "负"
       ];
       const option = {
-        tooltip: {
-          position: "top"
+        tooltip: { 
+          position: "top",
+          formatter: function(params) {
+            return (
+               `
+              ${days[params.value[1]]}
+              </br>
+              ${hours[params.value[0]]}
+              </br>
+              ${params.value[2].toFixed(2)}`
+            );
+          }
         },
         animation: true,
         grid: {
@@ -124,7 +134,7 @@ export default {
         },
         series: [
           {
-            name: "Punch Card",
+            name: "数据",
             type: "heatmap",
             data: data,
             label: {

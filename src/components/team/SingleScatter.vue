@@ -8,7 +8,7 @@ import echarts from "echarts";
 
 export default {
   props:{
-    data:Array
+    data:Object
   },
   methods: {
     drawScatter() {
@@ -16,16 +16,16 @@ export default {
         document.getElementById("singlescatter")
       );
 
-      const hours = ["洛杉矶湖人", "波士顿凯尔特人", "迈阿密热火", "布鲁克林篮网", "纽约尼克斯", "奥兰多魔术", "费城76人", "华盛顿奇才", "底特律活塞", "印第安纳步行者", "新奥尔良鹈鹕", "密尔沃基雄鹿", "亚特兰大老鹰", "芝加哥公牛", "多伦多猛龙", "克里夫兰骑士", "达拉斯独行侠", "圣安东尼奥马刺", "明尼苏达森林狼", "犹他爵士", "休斯顿火箭", "孟菲斯灰熊", "丹佛掘金", "萨克拉门托国王", "波特兰开拓者", "菲尼克斯太阳", "金州勇士", "俄克拉荷马城雷霆", "洛杉矶快船", "夏洛特黄蜂"];
+      const hours = ["克里夫兰骑士", "波士顿凯尔特人", "迈阿密热火", "布鲁克林篮网", "纽约尼克斯", "奥兰多魔术", "费城76人", "华盛顿奇才", "底特律活塞", "印第安纳步行者", "夏洛特黄蜂", "密尔沃基雄鹿", "亚特兰大老鹰", "芝加哥公牛", "多伦多猛龙", "洛杉矶湖人", "达拉斯独行侠", "圣安东尼奥马刺", "明尼苏达森林狼", "犹他爵士", "休斯顿火箭", "孟菲斯灰熊", "丹佛掘金", "萨克拉门托国王", "波特兰开拓者", "菲尼克斯太阳", "金州勇士", "俄克拉荷马城雷霆", "洛杉矶快船", "新奥尔良鹈鹕",''];
       let days = [
-        "10-11赛季",
-        "11-12赛季",
-        "12-13赛季",
-        "13-14赛季",
-        "14-15赛季",
-        "15-16赛季",
-        "16-17赛季",
-        "17-18赛季",
+        "10-11",
+        "11-12",
+        "12-13",
+        "13-14",
+        "14-15",
+        "15-16",
+        "16-17",
+        "17-18",
       ];
 
       let data = this.data;
@@ -33,6 +33,9 @@ export default {
       let option = {
         title: {
           text: "球队Rank值",
+        },
+        legend:{
+          data:['东部','西部']
         },
        
         tooltip: {
@@ -49,7 +52,7 @@ export default {
           }
         },
         grid: {
-          left: 2,
+          left: 10,
           bottom: 10,
           right: 10,
           containLabel: true
@@ -57,6 +60,7 @@ export default {
         xAxis: {
           type: "category",
           data: hours,
+    
           boundaryGap: false,
           splitLine: {
             show: true,
@@ -70,8 +74,8 @@ export default {
           },
           axisLabel: {
             show: true,
-            rotate: 60,
-            interval:0
+            rotate: 40,
+            interval:0,
           }
         },
         yAxis: {
@@ -83,12 +87,23 @@ export default {
         },
         series: [
           {
-            name: "论文数量",
+            name: "西部",
             type: "scatter",
             symbolSize: function(val) {
               return val[2] * 4.2;
             },
-            data: data,
+            data: data.xibu,
+            animationDelay: function(idx) {
+              return idx * 5;
+            }
+          },
+          {
+            name: "东部",
+            type: "scatter",
+            symbolSize: function(val) {
+              return val[2] * 4.2;
+            },
+            data: data.dongbu,
             animationDelay: function(idx) {
               return idx * 5;
             }
@@ -107,6 +122,7 @@ export default {
 <style scoped>
 #singlescatter {
   width: 100%;
+  margin-right: 4%;
   height: 550px;
 }
 </style>

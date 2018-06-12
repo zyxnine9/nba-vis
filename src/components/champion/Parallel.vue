@@ -44,7 +44,7 @@ export default {
             "洛杉矶湖人09-10",
             "洛杉矶湖人08-09"
           ],
-          bottom:'3%',
+          bottom:-4,
         },
         series: config
       };
