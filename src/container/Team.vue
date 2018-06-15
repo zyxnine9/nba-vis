@@ -10,6 +10,9 @@
     class="mag"
     v-if="rank_data"
     :data="rank_data"></single-scatter>
+    <inside
+    v-if="rank_data"
+    :rank="rank_data"></inside>
   </v-content>
 </template>
 
@@ -17,6 +20,7 @@
 import HeatMap from "../components/team/HeatMap";
 import SingleScatter from '../components/team/SingleScatter'
 import BarLine from "../components/team/BarLine";
+import Inside from '../components/team/Inside';
 import axios from "axios";
 
 export default {
@@ -39,6 +43,7 @@ export default {
   components: {
     "heat-map": HeatMap,
     "bar-line": BarLine,
+    "inside": Inside,
     'single-scatter': SingleScatter,
   }
 };

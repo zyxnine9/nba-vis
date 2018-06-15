@@ -9,7 +9,14 @@ export default {
     drawRadar() {
       let bar = echarts.init(document.getElementById("radar"));
       let option = {
+        title:{
+          text:'天赋'
+        },
         radar: {
+          axisLabel:{
+            fontWeight:'bold',
+            fontSize:30,
+          },
           // shape: 'circle',
           name: {
             textStyle: {
@@ -29,7 +36,8 @@ export default {
             { name: "创新能力", max: 38000 },
             { name: "人才潜力", max: 52000 },
             { name: "融资能力", max: 25000 }
-          ]
+          ],
+          
         },
         series: [
           {

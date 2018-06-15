@@ -75,12 +75,16 @@ export default {
           axisLabel: {
             show: true,
             rotate: 40,
-            interval:0,
-          }
+            fontSize:15,
+            fontWeight:'bold',
+          },
         },
         yAxis: {
           type: "category",
-          data: days,
+          data: days,axisLabel: {
+            fontSize:15,
+            fontWeight:'bold'
+          },
           axisLine: {
             show: false
           }

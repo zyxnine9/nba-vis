@@ -23,7 +23,8 @@ export default {
           left:'center'
         },
         tooltip: {
-          trigger: "axis"
+          trigger: "axis",
+          show:true,
         },
         legend: {
           data: this.getNames(),
