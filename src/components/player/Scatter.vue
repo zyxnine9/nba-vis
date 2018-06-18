@@ -31,8 +31,12 @@
       <v-slider :max="100" v-model="assist" label="助攻"></v-slider>
     </v-flex>
 
+    <v-flex xs4>
+      <v-slider :max="100" v-model="mistake" label="失误"></v-slider>
+    </v-flex>
+
     <v-flex xs5>
-      <v-card-text class="fon">x = {{score/100}}*得分 + {{assist/100}}*助攻</v-card-text>
+      <v-card-text class="fon">x = {{score/100}}*得分 + {{assist/100}}*助攻 - {{mistake/100}}*失误</v-card-text>
     </v-flex>
   </v-layout>
 </div>
@@ -51,7 +55,7 @@ export default {
       rebound: 10,
       block: 30,
       steal: 40,
-
+      mistake: 30,
       score: 60,
       assist: 40
     };
@@ -182,7 +186,7 @@ export default {
             name: Object.keys(e)[0],
             type: "scatter",
             data: e[Object.keys(e)[0]].map(item=>{return [
-              item.assist*this.assist/100 + item.score*this.score/100,
+              item.assist*this.assist/100 + item.score*this.score/100 - item.mistake*this.mistake,
               item.rebound*this.rebound/100 + item.steal*this.steal/100 + item.block*this.block/100,
               item.player_name
               ]}),
