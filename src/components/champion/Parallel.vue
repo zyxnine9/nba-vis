@@ -49,7 +49,6 @@ export default {
         series: config
       };
       parallel.setOption(option);
-      console.log(config);
     }
   },
   mounted() {

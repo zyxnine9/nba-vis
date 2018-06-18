@@ -1,18 +1,30 @@
 <template>
   <v-content>
-    this is playerhhhh
     <scatter
-    class="scatter"
-    v-if="series"
+    v-if="series && attribute"
     :legendData="legend"
     :series="series"
+    :attribute="attribute"
     ></scatter>
-    <v-flex xs8>
+     <v-progress-circular
+     v-else
+     :size="70" :width="7" indeterminate color="purple"></v-progress-circular>
+    <v-layout row>
+    <v-flex xs6>
       <usa-map
       v-if="player_geo"
       :data="player_geo"
       ></usa-map>
+       <v-progress-circular
+     v-else
+     :size="70" :width="7" indeterminate color="purple"></v-progress-circular>
+    </v-flex>  
+    <v-flex xs2></v-flex> 
+    <v-flex xs4>
+      <img src="../../static/USA.png" alt="">
     </v-flex>
+    </v-layout>
+
   </v-content>
 </template>
 
@@ -23,11 +35,15 @@ import axios from "axios";
 
 export default {
   created() {
-    axios.get('http://127.0.0.1:5000/api/player_geo.json').then(res=>{
+    axios.get('/api/player_geo.json').then(res=>{
       this.player_geo = res.data
     });
+    
+    axios.get('/api/player_a_d.json').then(res=>{
+      this.attribute = res.data
+    })
 
-    axios.get('http://127.0.0.1:5000/api/player_scatter.json').then(res=>{
+    axios.get('/api/player_scatter.json').then(res=>{
       this.series = [
         {name:'G', data: res.data.G},
         {name:'C', data: res.data.C},
@@ -44,6 +60,7 @@ export default {
       //进攻，防守，名字
       series: false,
       player_geo: false,
+      attribute: false,
     };
   },
   components: {
@@ -53,10 +70,8 @@ export default {
   }
 };
 </script>
-
 <style scoped>
-.scatter{
-  height: 500px;
+img {
+  width: 100%;
 }
 </style>
-

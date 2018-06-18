@@ -5,11 +5,9 @@
     <transition name="component-fade" mode="out-in">
 
       <router-view></router-view>  
-    </transition>
-      
+    </transition>     
       <div class="hei"></div>
-
-    <my-footer haha="caonima"></my-footer>
+    <my-footer></my-footer>
   </v-app>
 </template>
 

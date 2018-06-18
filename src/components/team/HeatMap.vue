@@ -156,7 +156,6 @@ export default {
   },
   mounted() {
     this.drawHeatMap();
-    console.log("heatmap");
   }
 };
 </script>

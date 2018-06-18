@@ -1,10 +1,15 @@
 <template>
-    <v-content id="radar"></v-content>
+    <v-content id="radar">
+      <p>{{player}}</p>
+    </v-content>
 </template>
 
 <script>
 import echarts from "echarts";
 export default {
+  props:{
+    player: Object,
+  },
   methods: {
     drawRadar() {
       let bar = echarts.init(document.getElementById("radar"));
@@ -12,6 +17,7 @@ export default {
         title:{
           text:'天赋'
         },
+        tooltip: {},
         radar: {
           axisLabel:{
             fontWeight:'bold',
@@ -30,21 +36,20 @@ export default {
             }
           },
           indicator: [
-            { name: "行业信息", max: 6500 },
-            { name: "企业规模", max: 16000 },
-            { name: "企业信用", max: 30000 },
-            { name: "创新能力", max: 38000 },
-            { name: "人才潜力", max: 52000 },
-            { name: "融资能力", max: 25000 }
+            { name: "得分", max: 27 },
+            { name: "篮板", max: 11 },
+            { name: "助攻", max: 8.2 },
+            { name: "三分", max: 3.4 },
+            { name: "出手", max: 19 },
           ],
-          
         },
         series: [
           {
             type: "radar",
             data: [
               {
-                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                value: [this.player["得分"],this.player['篮板'],this.player['助攻'],
+                this.player['命中'],this.player['出手']],
                 name: "数据",
                 itemStyle: {
                   normal: {
@@ -64,10 +69,14 @@ export default {
       bar.setOption(option);
     }
   },
+ 
   mounted() {
     this.drawRadar();
+  },
+  updated(){
+    this.drawRadar();
+  },
 
-  }
 };
 </script>
 

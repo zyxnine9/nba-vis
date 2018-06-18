@@ -15,7 +15,9 @@
   :y="y"
   title="项目进度"
   ></bar-char>
-
+  <v-layout justify-center>
+    <v-btn dark color="primary" @click="changeDay">换一天</v-btn>
+  </v-layout>
   <word-cloud
   v-if="words"
   title="NBA一览"
@@ -45,7 +47,6 @@
     </v-layout>
   </v-container>
 </div>
-
 </template>
 
 
@@ -59,17 +60,23 @@ export default {
   data(){
     return{
       y: ["爬取数据","数据处理","可视化"],
-      data: [70,60,66],
+      data: [98,97,99],
       name: "进度",
       words: false,
     }
   },
-  mounted(){
-    console.log("mounted")
+  methods: {
+    changeDay(){
+      this.words = false;
+      axios.get('/api/keywordss.json')
+    .then(response=>{
+      this.words = response.data;
+    })
+    console.log('daychange')
+    }
   },
   created(){
-    console.log("haha")
-     axios.get('http://127.0.0.1:5000/api/keywords.json')
+     axios.get('/api/keywords.json')
     .then(response=>{
       this.words = response.data;
     })

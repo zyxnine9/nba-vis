@@ -79,7 +79,6 @@ export default {
   },
   mounted() {
     this.drawBarChart(this.getOption());
-    console.log("bar");
   }
 };
 </script>

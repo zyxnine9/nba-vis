@@ -4,15 +4,25 @@
     v-if="team_data"
     :teamData="team_data"
     ></heat-map>  
-   <p>{-1: ['布鲁克林篮网', '孟菲斯灰熊', '俄克拉荷马雷霆', '休斯顿火箭'],
- 0: ['金州勇士', '新奥尔良鹈鹕'],</p>
+     <v-progress-circular
+     v-else
+     :size="70" :width="7" indeterminate color="purple"></v-progress-circular>
+  
     <single-scatter
     class="mag"
     v-if="rank_data"
     :data="rank_data"></single-scatter>
+     <v-progress-circular
+     v-else
+     :size="70" :width="7" indeterminate color="purple">
+     </v-progress-circular>
     <inside
     v-if="rank_data"
     :rank="rank_data"></inside>
+    <v-progress-circular
+     v-else
+     :size="70" :width="7" indeterminate color="purple">
+    </v-progress-circular>
   </v-content>
 </template>
 
@@ -25,11 +35,11 @@ import axios from "axios";
 
 export default {
   created() {
-    axios.get('http://127.0.0.1:5000/api/team_data.json')
+    axios.get('/api/team_data.json')
     .then(response=>{
       this.team_data = response.data;
     })
-    axios.get('http://127.0.0.1:5000/api/team_rank.json')
+    axios.get('/api/team_rank.json')
     .then(response=>{
       this.rank_data = response.data;
     })

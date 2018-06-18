@@ -35,9 +35,7 @@ export default {
       let map = echarts.init(document.getElementById("map"));
       const option = {
         title: {
-          text: "USA Population Estimates (2012)",
-          subtext: "Data from www.census.gov",
-          sublink: "http://www.census.gov/popest/data/datasets.html",
+          text: "NBA球员在美国的分布",
           left: "right"
         },
         tooltip: {

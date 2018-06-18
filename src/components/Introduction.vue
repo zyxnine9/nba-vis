@@ -1,7 +1,7 @@
 <template>
 <v-content>
    <v-layout>
-    <v-flex xs12 >
+    <v-flex xs12 lg12 sm12 md12>
       <v-card style="background: rgb(0, 188, 212)" class="mar">
         <p align='center' >
         <img 
