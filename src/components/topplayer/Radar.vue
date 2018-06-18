@@ -17,7 +17,7 @@ export default {
         title:{
           text:'天赋'
         },
-        tooltip: {},
+        tooltip: {}, 
         radar: {
           axisLabel:{
             fontWeight:'bold',
