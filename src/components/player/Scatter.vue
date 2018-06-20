@@ -22,7 +22,7 @@
       <v-card-text class="fon">y = {{rebound/100}}*篮板 + {{steal/100}}*抢断+ {{block/100}}*盖帽</v-card-text>
     </v-flex>
   </v-layout>
-  <v-layout row justify-center class="layout">
+  <v-layout row justify-center class="wodelayout">
     <v-flex xs4>
       <v-slider :max="100" v-model="score" label="得分"></v-slider>
     </v-flex>
@@ -35,7 +35,7 @@
       <v-slider :max="100" v-model="mistake" label="失误"></v-slider>
     </v-flex>
 
-    <v-flex xs5>
+    <v-flex xs4>
       <v-card-text class="fon">x = {{score/100}}*得分 + {{assist/100}}*助攻 - {{mistake/100}}*失误</v-card-text>
     </v-flex>
   </v-layout>
@@ -186,7 +186,7 @@ export default {
             name: Object.keys(e)[0],
             type: "scatter",
             data: e[Object.keys(e)[0]].map(item=>{return [
-              item.assist*this.assist/100 + item.score*this.score/100 - item.mistake*this.mistake,
+              item.assist*this.assist/100 + item.score*this.score/100 - item.mistake*this.mistake/100,
               item.rebound*this.rebound/100 + item.steal*this.steal/100 + item.block*this.block/100,
               item.player_name
               ]}),
